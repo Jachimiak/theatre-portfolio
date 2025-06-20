@@ -2,6 +2,22 @@
     --main-font: "Archivo Black", Arial, Helvetica, sans-serif;
     --link-font: "Space Grotesk", Arial, Helvetica, sans-serif;
     --font-color: white;
+    --heading-1-size: 4rem;
+    --heading-1-size-value: 4;
+    --large-text-size: 1.4rem;
+    --large-text-size-value: 1.4;
+    --site-title-font-font-size: 1.5rem;
+    --site-title-font-font-size-value: 1.5;
+    --normal-text-size: 1rem;
+    --normal-text-size: 1rem;
+    --site-navigation-font-font-size: var(--normal-text-size);
+    --site-navigation-font-font-size-value: var(--normal-text-size-value);
+    --small-text-size: .9rem;
+    --small-text-size-value: .9;
+    --header-outer-height: 110px;
+    --header-inner-height: 70px;
+    --header-height-difference: calc(var(--header-outer-height) - var(--header-inner-height);
+);
 }
 
 *, ::before, ::after {
@@ -12,46 +28,78 @@
 
 body {
     background: black;
+    color: var(--font-color);
 }
 
-#header {
-    padding: 2.5vh 4vw;
-    box-sizing: border-box;
+/* Sticky Header Design */
+
+.header-outer {
+    position: sticky;
+    top: 0;
+    padding: 2.5vw 4vw;
+    align-items: center;
     border-bottom: 2px solid lightgrey;
+    background-color: black;
 
 }
 
-.full-header{
-    height: 100%;
-    width: 100%;
-    display: flex;
+.header-inner{
+    display:flex;
     justify-content: space-between;
     align-items: center;
-    
+    flex-wrap: nowrap;  
 }
 
-.header-title-text {
+.header-logo {
     font-family: var(--main-font);
     color: #FFF;
-    font-size: 32px;
+    font-size: calc((var(--site-title-font-font-size-value) - 1) * 1.2vw + 1rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    text-wrap: nowrap;
 }
 
-nav {
-    width: 40vw;
-    min-width: 380px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+.header-navigation {
+	display: flex;
+	flex-wrap: wrap;
 }
 
-nav a {
+
+.header-navigation a {
     font-family: var(--link-font);
-    color: var(--font-color);
-    text-decoration: none;
+    color: inherit;
+    position: relative;
+    margin-left: 4vw;
+    text-wrap: nowrap;
+    font-size: calc(var(--site-navigation-font-font-size-value) * 1rem);
+    font-weight: 500;
 }
+
+.header-navigation a {
+	font-size: 1.125rem;
+	color: inherit;
+	text-decoration: none;
+}
+
+.header-navigation a:hover:after {
+    transform: scaleX(1);
+}
+
+.header-navigation a:after {
+    transition: 0.25s ease;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transform: scaleX(0);
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+}
+
+/* Main body of first page with hero image and name/position. */
 
 .hero-image {
     position: absolute;
@@ -70,6 +118,73 @@ nav a {
     width:100%;
     height: 100%;
     position: absolute;
-    background-color: rgb(0, 0, 0, 0.78);
+    background-color: rgb(0, 0, 0, 0.58);
     z-index: -1;
+}
+
+main {
+    height: calc(100vh - 5vh);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-text {
+    width: calc(80vw - 1rem);
+}
+
+.hero-name h1 {
+    font-family: var(--main-font);
+    color: var(--font-color);
+    font-size: calc((var(--heading-1-size-value) - 1) * 1.2vw + 1rem);
+    text-align: center;
+    margin: 2rem;
+}
+
+.hero-sub p {
+    font-family: var(--link-font);
+    color: var(--font-color);
+    font-size: calc((var(--large-text-size-value) - 1) * 1.2vw + 1rem);
+    text-align: center;
+    margin: 2rem;
+}
+
+/* Footer Design */
+
+
+.footer-container {
+    display: grid;
+    grid-template-areas:
+        "copyright blank contact";
+    grid-template-columns: repeat(3,1fr);
+    gap: 5px;
+    padding: 5px;
+    background-color: black;
+    margin: auto 10vw;
+}
+
+.copyright {
+    grid-area: copyright;
+    font-size: calc(var(--large-text-size-value) * 1rem);
+    font-family: var(--link-font);
+    text-wrap: nowrap;
+}
+
+.blank {
+    grid-area: blank;
+}
+
+.contact {
+    grid-area: contact;
+    text-align: right;
+    text-wrap: nowrap;
+    
+}
+
+.contact a {
+    font-family: var(--link-font);
+    color: var(--font-color);
+    text-decoration: none;
+    text-wrap: nowrap;
+    font-size: calc(var(--small-text-size-value) * 1rem);
 }
