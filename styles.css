@@ -1,3 +1,4 @@
+/* General styles */
 :root {
     --main-font: "Archivo Black", Arial, Helvetica, sans-serif;
     --link-font: "Space Grotesk", Arial, Helvetica, sans-serif;
@@ -150,7 +151,6 @@ main {
 }
 
 /* Footer Design */
-
 
 .footer-container {
     display: grid;
