@@ -17,8 +17,11 @@
     --small-text-size-value: .9;
     --header-outer-height: 110px;
     --header-inner-height: 70px;
-    --header-height-difference: calc(var(--header-outer-height) - var(--header-inner-height);
-);
+    --header-height-difference: calc(var(--header-outer-height) - var(--header-inner-height));
+    --heading-4-size: 1.6rem;
+    --heading-4-size-value: 1.6;
+    --portfolio-grid-basic-title-font-font-size: var(--heading-4-size);
+    --portfolio-grid-basic-title-font-font-size-value: var(--heading-4-size-value);
 }
 
 *, ::before, ::after {
@@ -31,6 +34,26 @@ body {
     background: black;
     color: var(--font-color);
 }
+
+h1 {
+    font-family: var(--main-font);
+    color: var(--font-color);
+    font-size: calc((var(--heading-1-size-value) - 1) * 1.2vw + 1rem);
+    text-align: center;
+    margin: 2rem;
+}
+
+h3 {
+    font-family: var(--main-font);
+    color: var(--font-color);
+    font-size: calc((var(--portfolio-grid-basic-title-font-font-size-value) - 1) * 1.2vw + 1rem);
+    text-align: center;
+}
+
+h3 {
+    font-family: var(--main-font);
+}
+
 
 /* Sticky Header Design */
 
@@ -108,7 +131,7 @@ body {
     height: 100%;
     top: 0;
     left: 0;
-    background-image: url("./assets/IMG_1234.jpg");
+    background-image: url("./images/IMG_1234.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -123,7 +146,7 @@ body {
     z-index: -1;
 }
 
-main {
+.center-name {
     height: calc(100vh - 5vh);
     display: flex;
     justify-content: center;
@@ -150,9 +173,54 @@ main {
     margin: 2rem;
 }
 
+/* Design Pages */
+
+.content-wrapper {
+    padding-top: 3.3vmax;
+    padding-bottom: 3.3vmax;
+    display: flex;
+    justify-content: center;
+}
+
+
+.portfolio-grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 10px;
+    padding: 10px;
+    margin: 0 auto;
+    max-width: 1400px;
+    text-align: center;
+    justify-content: center;
+}
+
+.portfolio-grid-item {
+    max-width: 100%;
+    padding: 20px;
+    text-align: center;
+    aspect-ratio: 1;
+}
+
+.portfolio-grid-item-image {
+    width: 100%;
+    overflow: hidden;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+portfolio-grid-item-name h3 {
+
+}
+
 /* Footer Design */
 
+footer {
+    height: 20vh;
+}
+
 .footer-container {
+    
     display: grid;
     grid-template-areas:
         "copyright blank contact";
