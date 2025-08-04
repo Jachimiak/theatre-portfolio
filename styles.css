@@ -1,33 +1,77 @@
-/* General styles */
-:root {
-    --main-font: "Archivo Black", Arial, Helvetica, sans-serif;
-    --link-font: "Space Grotesk", Arial, Helvetica, sans-serif;
-    --font-color: white;
-    --heading-1-size: 4rem;
-    --heading-1-size-value: 4;
-    --large-text-size: 1.4rem;
-    --large-text-size-value: 1.4;
-    --site-title-font-font-size: 1.5rem;
-    --site-title-font-font-size-value: 1.5;
-    --normal-text-size: 1rem;
-    --normal-text-size: 1rem;
-    --site-navigation-font-font-size: var(--normal-text-size);
-    --site-navigation-font-font-size-value: var(--normal-text-size-value);
-    --small-text-size: .9rem;
-    --small-text-size-value: .9;
-    --header-outer-height: 110px;
-    --header-inner-height: 70px;
-    --header-height-difference: calc(var(--header-outer-height) - var(--header-inner-height));
-    --heading-4-size: 1.6rem;
-    --heading-4-size-value: 1.6;
-    --portfolio-grid-basic-title-font-font-size: var(--heading-4-size);
-    --portfolio-grid-basic-title-font-font-size-value: var(--heading-4-size-value);
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  /* border: 1px solid red; */
 }
 
-*, ::before, ::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
+
+/* Start of my CSS */
+
+:root {
+  --main-font: "Archivo Black", Arial, Helvetica, sans-serif;
+  --link-font: "Space Grotesk", Arial, Helvetica, sans-serif;
+  --font-color: white;
+  --heading-1-size: 4rem;
+  --heading-1-size-value: 4;
+  --large-text-size: 1.4rem;
+  --large-text-size-value: 1.4;
+  --site-title-font-font-size: 1.5rem;
+  --site-title-font-font-size-value: 1.5;
+  --normal-text-size: 1rem;
+  --normal-text-size: 1rem;
+  --site-navigation-font-font-size: var(--normal-text-size);
+  --site-navigation-font-font-size-value: var(--normal-text-size-value);
+  --small-text-size: .9rem;
+  --small-text-size-value: .9;
+  --header-outer-height: 110px;
+  --header-inner-height: 70px;
+  --header-height-difference: calc(var(--header-outer-height) - var(--header-inner-height));
+  --heading-4-size: 1.6rem;
+  --heading-4-size-value: 1.6;
+  --portfolio-grid-basic-title-font-font-size: var(--heading-4-size);
+  --portfolio-grid-basic-title-font-font-size-value: var(--heading-4-size-value);
 }
 
 body {
@@ -35,36 +79,28 @@ body {
     color: var(--font-color);
 }
 
-h1 {
-    font-family: var(--main-font);
-    color: var(--font-color);
-    font-size: calc((var(--heading-1-size-value) - 1) * 1.2vw + 1rem);
-    text-align: center;
-    margin: 2rem;
+li {
+  display: inline
 }
 
-h3 {
-    font-family: var(--main-font);
-    color: var(--font-color);
-    font-size: calc((var(--portfolio-grid-basic-title-font-font-size-value) - 1) * 1.2vw + 1rem);
-    text-align: center;
+ul {
+  flex-wrap: nowrap;
+  display: flex;
 }
 
-h3 {
-    font-family: var(--main-font);
-}
+/* Header Box */
 
-
-/* Sticky Header Design */
-
-.header-outer {
-    position: sticky;
-    top: 0;
-    padding: 2.5vw 4vw;
-    align-items: center;
-    border-bottom: 2px solid lightgrey;
-    background-color: black;
-
+#header {
+  background-color: black; /* Grey background */
+  position: sticky;
+  top: 0;
+  align-items: center;
+  border-bottom: 2px solid lightgrey;
+  position: fixed; /* Fixed position - sit on top of the page */
+  padding: 2vw 3vw;
+  top: 0;
+  width: 100%; /* Full width */
+  transition: 0.4s; /* Add a transition effect (when scrolling - and font size is decreased) */
 }
 
 .header-inner{
@@ -74,70 +110,60 @@ h3 {
     flex-wrap: nowrap;  
 }
 
-.header-logo {
+/* Logo and/or Site Title */
+
+#header-logo {
     font-family: var(--main-font);
-    color: #FFF;
-    font-size: calc((var(--site-title-font-font-size-value) - 1) * 1.2vw + 1rem);
+    color: var(--font-color);
+    font-size: clamp(.7rem, 2vw + 0.5rem, 2.5rem);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     text-wrap: nowrap;
+    transition: 0.4s; /* Add a transition effect (when scrolling - and font size is decreased) */
+}
+
+/* Navbar */
+
+#header-navigation ul li a {
+  font-family: var(--link-font);
+  color: inherit;
+  margin-left: 4vw;
+  
+  font-weight: 300;
+  text-decoration: none;
+  text-wrap: nowrap;
+  transition: 0.4s; /* Add a transition effect (when scrolling - and font size is decreased) */
 }
 
 .header-navigation {
-	display: flex;
-	flex-wrap: wrap;
+  font-size: clamp(.2rem, 1vw + 0.5rem, 1.5rem);
 }
 
+/* Center Page */
 
-.header-navigation a {
-    font-family: var(--link-font);
-    color: inherit;
-    position: relative;
-    margin-left: 4vw;
-    text-wrap: nowrap;
-    font-size: calc(var(--site-navigation-font-font-size-value) * 1rem);
-    font-weight: 500;
+.center-name {
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.header-navigation a {
-	font-size: 1.125rem;
-	color: inherit;
-	text-decoration: none;
-}
-
-.header-navigation a:hover:after {
-    transform: scaleX(1);
-}
-
-.header-navigation a:after {
-    transition: 0.25s ease;
-    content: "";
-    display: block;
-    width: 100%;
-    height: 2px;
-    background-color: white;
-    transform: scaleX(0);
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-}
-
-/* Main body of first page with hero image and name/position. */
-
+/* Main Image Background */
 .hero-image {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    background-image: url("./images/IMG_1234.jpg");
+    background-image: url("./images/anatomyOfGray01.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     z-index: -2;
 }
 
+/* Darken Image Background */
 .hero-image-overlay {
     width:100%;
     height: 100%;
@@ -146,72 +172,32 @@ h3 {
     z-index: -1;
 }
 
-.center-name {
-    height: calc(100vh - 5vh);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+/* Title of Site */
 
 .hero-text {
     width: calc(80vw - 1rem);
 }
 
+/* My Name */
+
 .hero-name h1 {
     font-family: var(--main-font);
     color: var(--font-color);
-    font-size: calc((var(--heading-1-size-value) - 1) * 1.2vw + 1rem);
+    font-size: clamp(1rem, 4vw + 0.5rem, 5.5rem);
     text-align: center;
     margin: 2rem;
 }
+
+/* My Areas of Specialty */
 
 .hero-sub p {
     font-family: var(--link-font);
     color: var(--font-color);
-    font-size: calc((var(--large-text-size-value) - 1) * 1.2vw + 1rem);
+    font-size: clamp(.7rem, 1.75vw + 0.5rem, 2.5rem);
     text-align: center;
     margin: 2rem;
 }
 
-/* Design Pages */
-
-.content-wrapper {
-    padding-top: 3.3vmax;
-    padding-bottom: 3.3vmax;
-    display: flex;
-    justify-content: center;
-}
-
-
-.portfolio-grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
-    gap: 10px;
-    padding: 10px;
-    margin: 0 auto;
-    max-width: 1400px;
-    text-align: center;
-    justify-content: center;
-}
-
-.portfolio-grid-item {
-    max-width: 100%;
-    padding: 20px;
-    text-align: center;
-    aspect-ratio: 1;
-}
-
-.portfolio-grid-item-image {
-    width: 100%;
-    overflow: hidden;
-    aspect-ratio: 1;
-    object-fit: cover;
-}
-
-portfolio-grid-item-name h3 {
-
-}
 
 /* Footer Design */
 
